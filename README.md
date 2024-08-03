@@ -1,9 +1,3 @@
-
-
-
-http://www.cypherspace.org/adam/rsa/rsa-details.html
-
-
 RSA Encryption with Perl and Docker
 ===================================
 
