@@ -44,23 +44,32 @@ How to Use
 
 Generate RSA keys using the `set_key.sh` script. Specify the key size as an argument, for example:
 
-`./set_key.sh 512
+```
+./set_key.sh 512
+```
 
 or
 
-./set_key.sh 2048`
+```
+./set_key.sh 2048
+```
+
 
 This will create or overwrite `private.key`, `public.key`, `private_key_values.txt`, and `public_key_values.txt`.
 
 To view the keys in a human-readable format, use the `display_key.sh` script:
 
-`./display_key.sh`
+```
+./display_key.sh
+```
 
 ### Step 2: Build the Docker Image
 
 To build the Docker image, navigate to the repository's root directory and run:
 
-`docker build -t rsa-encryption .`
+```
+docker build -t rsa-encryption .
+```
 
 ### Step 3: Run the Perl RSA Script in docker
 
@@ -68,20 +77,26 @@ To build the Docker image, navigate to the repository's root directory and run:
 
 To run the RSA encryption with keys from the generated files just launch this command, the dockerfile is configured to use `private_key_values.txt` and `public_key_values.txt` :
 
-`docker build -t rsa-perl .`
+```
+docker build -t rsa-perl .
+```
 
 #### Using Keys Defined in the Script
 
 To run the RSA encryption with exeample keys directly defined in the script, use `run_rsa.sh` modify in dockerfile to set the script:
 
-`docker build -t rsa-perl .`
+```
+docker build -t rsa-perl .
+```
 
 
 ### Step 5: Running with Docker
 
 RUN:
 
-`docker run -it rsa-perl`
+```
+docker run -it rsa-perl
+```
 
 for exeample, that give this in the terminal :
 
@@ -98,6 +113,7 @@ Encrypted message (not copy-pasteable) :
 NkDvl\f<C)>ڋ8ŉJԯFNhA(sTd?xNDecrypted message :
 -i used with no filenames on the command line, reading from STDIN.
 salut ça va ?
+
 
 Conclusion
 ----------
