@@ -24,6 +24,20 @@ Crypto wars is an informal term referring to the efforts by the US government to
 
 [wikipedia Crypto Wars](https://en.wikipedia.org/wiki/Crypto_Wars)
 
+Requirements
+--------------------
+
+-   Docker
+-   OpenSSL command line tool
+
+to test if you have openssl and docker installed, run the following command :
+
+```
+openssl version
+docker --version
+```
+
+
 Repository Structure
 --------------------
 
@@ -36,6 +50,7 @@ Repository Structure
 -   `run_rsa.sh`: Script to run the Perl RSA encryption with keys defined within the script.
 -   `run_rsa_openssl.sh`: Script to run the Perl RSA encryption with keys from `private_key_values.txt` and `public_key_values.txt`.
 -   `set_key.sh`: Script to generate keys using OpenSSL. Takes key size as a parameter.
+-   `message_input.txt` : File containing the message to encrypt.
 
 How to Use
 ----------
@@ -48,7 +63,7 @@ Generate RSA keys using the `set_key.sh` script. Specify the key size as an argu
 ./set_key.sh 512
 ```
 
-or
+or (for a more secure key size):
 
 ```
 ./set_key.sh 2048
@@ -65,7 +80,7 @@ To view the keys in a human-readable format, use the `display_key.sh` script:
 
 ### Step 2: Build the Docker Image
 
-To build the Docker image, navigate to the repository's root directory and run:
+To build the Docker image run:
 
 ```
 docker build -t rsa-encryption .
@@ -113,6 +128,8 @@ Encrypted message (not copy-pasteable) :
 NkDvl\f<C)>ڋ8ŉJԯFNhA(sTd?xNDecrypted message :
 -i used with no filenames on the command line, reading from STDIN.
 salut ça va ?
+
+the encrypted message is not copy-pasteable (maybe?), the encrypted message is in the msg.rsa file (in the container, so, is destroyed when the container is stopped, maybe in a future version, the file will be copied to the host)
 
 
 Conclusion

@@ -19,7 +19,7 @@ echo Modulus of private key : $np
 
 echo "Encrypt message"
 #the message is "salut ça va ?"
-echo "salut ça va ?" | /usr/local/bin/rsa -k=$e -n=$n > msg.rsa
+cat message_input.txt | /usr/local/bin/rsa -k=$e -n=$n > msg.rsa
 
 # Display encrypted message
 echo "Encrypted message (not copy-pasteable) :"
