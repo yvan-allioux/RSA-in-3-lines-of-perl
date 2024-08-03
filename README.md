@@ -70,7 +70,7 @@ or (for a more secure key size):
 ```
 
 
-This will create or overwrite `private.key`, `public.key`, `private_key_values.txt`, and `public_key_values.txt`.
+This will create or overwrite `private.key`, `public.key`, `private_key_values.txt`, and `public_key_values.txt` in the folder "key".
 
 To view the keys in a human-readable format, use the `display_key.sh` script:
 
@@ -83,14 +83,14 @@ To view the keys in a human-readable format, use the `display_key.sh` script:
 To build the Docker image run:
 
 ```
-docker build -t rsa-encryption .
+docker build -t rsa-perl .
 ```
 
 ### Step 3: Run the Perl RSA Script in docker
 
 #### Using Keys from Generated Files, build docker image
 
-To run the RSA encryption with keys from the generated files just launch this command, the dockerfile is configured to use `private_key_values.txt` and `public_key_values.txt` :
+To run the RSA encryption with keys from the generated files just launch this command, the dockerfile is configured to use `private.key` and `public.key` in the folder key :
 
 ```
 docker build -t rsa-perl .
@@ -112,6 +112,26 @@ RUN:
 ```
 docker run -it rsa-perl
 ```
+
+And you can set a voilume to the container to save the encrypted message and the decrypted message :
+
+```
+docker run -v $(pwd)/output:/output rsa-perl
+```
+
+the result will be in the output folder
+
+    - message_input.txt -> output/msg.rsa
+    - message_input.rsa -> output/msg.txt
+
+For update message_input.txt or message_input.rsa, you ave to rebuild the image with docker build -t rsa-perl .
+
+command to build and run the container :
+
+```
+docker build -t rsa-perl . && docker run -v $(pwd)/output:/output rsa-perl
+```
+
 
 for exeample, that give this in the terminal :
 

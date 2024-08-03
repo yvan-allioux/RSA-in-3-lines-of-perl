@@ -5,26 +5,26 @@ FROM perl:latest
 RUN apt-get update && apt-get install -y dc
 
 # Copy the script to the image
-COPY rsa /usr/local/bin/rsa
+COPY rsa /rsa
 
 # Make the script perl executable
-RUN chmod +x /usr/local/bin/rsa
+RUN chmod +x /rsa
 
 # Set the working directory
-COPY . /usr/local/bin/
+COPY . /
 
 # Make the script bash executable
-RUN chmod +x /usr/local/bin/*.sh
+RUN chmod +x /*.sh
 
-WORKDIR /usr/local/bin/
+WORKDIR /
 
 # Define the entry point
 
 #use the file in directory
-ENTRYPOINT ["/usr/local/bin/run_rsa_openssl.sh"]
+ENTRYPOINT ["/run_rsa_openssl.sh"]
 
 #use the value in the run_rsa.sh code
-#ENTRYPOINT [ "/usr/local/bin/run_rsa.sh" ]
+#ENTRYPOINT [ "/run_rsa.sh" ]
 
 
 
